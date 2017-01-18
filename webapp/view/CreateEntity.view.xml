@@ -1,0 +1,75 @@
+<mvc:View controllerName="MockData.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit NorthwindModel.Employee': 'New NorthwindModel.Employee'}">
+				<f:content>
+					<Label text="EmployeeID" required="true"/>
+					<Input name="EmployeeID" id="EmployeeID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'EmployeeID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
+					<Label text="LastName" required="true"/>
+					<Input name="LastName" id="LastName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'LastName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:20, nullable:false } }"/>
+					<Label text="FirstName" required="true"/>
+					<Input name="FirstName" id="FirstName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'FirstName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="Title" required="false"/>
+					<Input name="Title" id="Title_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Title', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30 } }"/>
+					<Label text="TitleOfCourtesy" required="false"/>
+					<Input name="TitleOfCourtesy" id="TitleOfCourtesy_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'TitleOfCourtesy', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:25 } }"/>
+					<Label text="BirthDate" required="false"/>
+					<DatePicker name="BirthDate" value="{ path: 'BirthDate', type: 'sap.ui.model.type.DateTime'}" id="BirthDate_id" type="DateTime"
+						enabled="true" visible="true"/>
+					<Label text="HireDate" required="false"/>
+					<DatePicker name="HireDate" value="{ path: 'HireDate', type: 'sap.ui.model.type.DateTime'}" id="HireDate_id" type="DateTime" enabled="true"
+						visible="true"/>
+					<Label text="Address" required="false"/>
+					<Input name="Address" id="Address_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Address', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60 } }"/>
+					<Label text="City" required="false"/>
+					<Input name="City" id="City_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'City', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:15 } }"/>
+					<Label text="Region" required="false"/>
+					<Input name="Region" id="Region_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Region', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:15 } }"/>
+					<Label text="PostalCode" required="false"/>
+					<Input name="PostalCode" id="PostalCode_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'PostalCode', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10 } }"/>
+					<Label text="Country" required="false"/>
+					<Input name="Country" id="Country_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Country', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:15 } }"/>
+					<Label text="HomePhone" required="false"/>
+					<Input name="HomePhone" id="HomePhone_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'HomePhone', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:24 } }"/>
+					<Label text="Extension" required="false"/>
+					<Input name="Extension" id="Extension_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Extension', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4 } }"/>
+					<Label text="Photo" required="false"/>
+					<Input name="Photo" id="Photo_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Photo', type: 'sap.ui.model.odata.type.String' }"/>
+					<Label text="Notes" required="false"/>
+					<Input name="Notes" id="Notes_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Notes', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:Max } }"/>
+					<Label text="ReportsTo" required="false"/>
+					<Input name="ReportsTo" id="ReportsTo_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'ReportsTo', type: 'sap.ui.model.odata.type.Int32' }"/>
+					<Label text="PhotoPath" required="false"/>
+					<Input name="PhotoPath" id="PhotoPath_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'PhotoPath', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:255 } }"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
